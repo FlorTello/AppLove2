@@ -24,23 +24,12 @@ function crearImgWork(url,descripcion,id){
   figure.appendChild(img);
   figure.appendChild(figcaption);
   img.addEventListener('click',function(e){
-    console.log(e.target.parentNode);
-    mostrarModal(e.target.getAttribute('src'));
-    document.getElementById('nextSpan').setAttribute('next-src',e.target.parentNode.nextSibling.firstChild.getAttribute('src'));
+    console.log(e.target);
+    var img = document.createElement('img');
+    img.setAttribute('src',e.target.getAttribute('src'));
+    document.getElementById('modal-img').setAttribute('src',e.target.getAttribute('src'));
+    // document.getElementById('modal').style.display = 'block';
+    document.getElementById('modal').classList.toggle('OpenClose');
   });
   return figure;
 }
-function mostrarModal(src){
-  var img = document.createElement('img');
-  img.setAttribute('src',src);
-  document.getElementById('modal-img').setAttribute('src',src);
-  // document.getElementById('modal').style.display = 'block';
-  document.getElementById('modal').classList.toggle('OpenClose');
-}
-document.getElementById('nextSpan').addEventListener('click',function(e){
-  // parentNode = e.target.parentNode.nextSibling.firstChild.getAttribute('src');
-  console.log(e.target.getAttribute('next-src'));
-  mostrarModal(e.target.getAttribute('next-src'));
-    document.getElementById('modal').style.display = 'block';
-
-});;
